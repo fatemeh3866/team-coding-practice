@@ -4,6 +4,8 @@
         "exception": "cpp",
         "list": "cpp",
         "vector": "cpp",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "unordered_map": "cpp",
+        "iostream": "cpp"
     }
 }

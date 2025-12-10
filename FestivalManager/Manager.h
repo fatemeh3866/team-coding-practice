@@ -1,9 +1,12 @@
+#ifndef MANAGER_H
+#define MANAGER_H
 #include<unordered_map>
 #include"Participant.h"
 #include"Event.h"
 #include "Exceptions.h"
 #include <algorithm>
-using namespase std;
+#include <iostream>
+using namespace std;
 class Manager {
 private:
 	unordered_map<int,Participant> participant;
@@ -17,3 +20,5 @@ public:
 	vector<Event> listEventsSortedByType();
 	vector<Event> listEventsSortedByParticipantCount();
 };
+
+#endif

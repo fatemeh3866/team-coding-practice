@@ -15,18 +15,20 @@ Participant& Manager::findParticipant(int pi) {
 	throw ParticipantException ();
 };
 void Manager::addEvent(Event& e) {
-	Event::eventID id = e.getID();
-	event.insert({ id, e });
+	int id = e.getID();
+	event.insert(make_pair(id, e));
 };
 void Manager::addParticipant(Participant& p) {
-	Participant::participantID id = p.getID();
-	participant.insert({id,p});
+	int id = p.getID();
+	participant.insert(make_pair(id,p));
 };
 
 void Manager::registerParticipantToEvent(int pi, int ei)
 {
     Event& e = findEvent(ei);
     Participant& p = findParticipant(pi);
+
+    cout << e.getID() << " " << e.participant_count() << " " << e.getCapacity() << endl;
     
     if (e.participant_count() == e.getCapacity())
     {
@@ -45,7 +47,7 @@ vector<Event> Manager::listEventsSortedByType()
         res.push_back(ev.second);
     }
 
-    res.sort(res.begin(), res.end(), [](const Event& a, const Event& b){return a.getEventType() < b.getEventType()});
+    sort(res.begin(), res.end(), [](const Event& a, const Event& b){return a.getEventType() < b.getEventType();});
 
     return res;
 }
@@ -58,7 +60,7 @@ vector<Event> Manager::listEventsSortedByParticipantCount()
         res.push_back(ev.second);
     }
 
-    res.sort(res.begin(), res.end(), [](const Event& a, const Event& b){return a.participant_count() < b.participant_count()});
+    sort(res.begin(), res.end(), [](const Event& a, const Event& b){return a.participant_count() < b.participant_count();});
 
     return res;
 }

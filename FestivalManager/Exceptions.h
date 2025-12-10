@@ -5,23 +5,26 @@
 using namespace std;
 
 class EventException : public exception {
-    const char* what() noexcept override
+public:
+    const char* what() const noexcept override
     {
         return "The Event not found!";
     }
 };
 
 class ParticipantException : public exception {
-    const char* what() noexcept override
+public:
+    const char* what() const noexcept override
     {
-        return "The Participant not found!"
+        return "The Participant not found!";
     }
 };
 
 class CapacityException : public exception {
-    const char* what() noexcept override
+public:
+    const char* what() const noexcept override
     {
-        return "This event is full!"
+        return "This event is full!";
     }
 };
 
