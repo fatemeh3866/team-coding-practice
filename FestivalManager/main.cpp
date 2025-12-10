@@ -26,23 +26,60 @@ int main() {
     manager.addParticipant(p2);
     manager.addParticipant(p3);
 
-    manager.registerParticipantToEvent(p1.getID(), e3.getID());
     try
     {
-        manager.registerParticipantToEvent(p2.getID(), e3.getID());
+        manager.registerParticipantToEvent(p1.getID(), e3.getID());
     }
-    catch(const std::exception& e)
+    catch(const CapacityException& e)
+    {
+        cerr << e.what() << '\n';
+    } catch(const ParticipantException& e)
+    {
+        cerr << e.what() << '\n';
+    } catch(const EventException& e)
     {
         cerr << e.what() << '\n';
     }
 
-    manager.registerParticipantToEvent(p3.getID(), e2.getID());
+    try
+    {
+        manager.registerParticipantToEvent(p2.getID(), e3.getID());
+    }catch(const CapacityException& e)
+    {
+        cerr << e.what() << '\n';
+    } catch(const ParticipantException& e)
+    {
+        cerr << e.what() << '\n';
+    } catch(const EventException& e)
+    {
+        cerr << e.what() << '\n';
+    }
+
+    try
+    {
+        manager.registerParticipantToEvent(p3.getID(), e2.getID());
+    }
+    catch(const CapacityException& e)
+    {
+        cerr << e.what() << '\n';
+    } catch(const ParticipantException& e)
+    {
+        cerr << e.what() << '\n';
+    } catch(const EventException& e)
+    {
+        cerr << e.what() << '\n';
+    }
 
     try
     {
         manager.registerParticipantToEvent(p3.getID(), 5);
-    }
-    catch(const std::exception& e)
+    }catch(const CapacityException& e)
+    {
+        cerr << e.what() << '\n';
+    } catch(const ParticipantException& e)
+    {
+        cerr << e.what() << '\n';
+    } catch(const EventException& e)
     {
         cerr << e.what() << '\n';
     }
@@ -51,8 +88,13 @@ int main() {
     try
     {
         manager.registerParticipantToEvent(8, e3.getID());
-    }
-    catch(const std::exception& e)
+    }catch(const CapacityException& e)
+    {
+        cerr << e.what() << '\n';
+    } catch(const ParticipantException& e)
+    {
+        cerr << e.what() << '\n';
+    } catch(const EventException& e)
     {
         cerr << e.what() << '\n';
     }
