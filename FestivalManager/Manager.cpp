@@ -27,8 +27,6 @@ void Manager::registerParticipantToEvent(int pi, int ei)
 {
     Event& e = findEvent(ei);
     Participant& p = findParticipant(pi);
-
-    cout << e.getID() << " " << e.participant_count() << " " << e.getCapacity() << endl;
     
     if (e.participant_count() == e.getCapacity())
     {
