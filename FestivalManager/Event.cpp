@@ -1,10 +1,11 @@
 #include"Event.h"
 #include<vector>
-count = 0;
-Event::Event(string n,string t){
+int Event::count = 0;
+Event::Event(string n,string t, int c){
 	eventID = count;
 	eventName = n;
 	eventType = t;
+    capacity = c;
 	count++;
 }
 int Event::setID(int a) {

@@ -1,6 +1,8 @@
 #include<unordered_map>
 #include"Participant.h"
 #include"Event.h"
+#include "Exceptions.h"
+#include <algorithm>
 using namespase std;
 class Manager {
 private:
@@ -11,7 +13,7 @@ public:
 	Participant& findParticipant(int pi);
 	void addEvent(Event& e);
 	void addParticipant(Participant& p);
-	bool registerParticipantToEvent(int pi, int ei);
-	void listEventsSortedByType();
-	void listEventsSortedByParticipantCount();
+	void registerParticipantToEvent(int pi, int ei);
+	vector<Event> listEventsSortedByType();
+	vector<Event> listEventsSortedByParticipantCount();
 };

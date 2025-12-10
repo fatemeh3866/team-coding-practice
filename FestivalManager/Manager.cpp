@@ -5,14 +5,14 @@ Event& Manager::findEvent(int ei) {
 	   if (it != event.end()) {
 		   return it->second;
 	   }
-   throw EventException("The Event not found!");
+   throw EventException();
 };
 Participant& Manager::findParticipant(int pi) {
 	auto it = participant.find(pi);
 		if (it != participant.end()) {
 			return it->second;
 		}
-	throw ParticipantException ("The Participant not found!");
+	throw ParticipantException ();
 };
 void Manager::addEvent(Event& e) {
 	Event::eventID id = e.getID();
@@ -23,4 +23,42 @@ void Manager::addParticipant(Participant& p) {
 	participant.insert({id,p});
 };
 
+void Manager::registerParticipantToEvent(int pi, int ei)
+{
+    Event& e = findEvent(ei);
+    Participant& p = findParticipant(pi);
+    
+    if (e.participant_count() == e.getCapacity())
+    {
+        throw CapacityException();
+    }
 
+    e.addparticipant(pi);
+    p.AddInEvent(ei);
+}
+
+vector<Event> Manager::listEventsSortedByType()
+{
+    vector<Event> res;
+    for (auto& ev : event)
+    {
+        res.push_back(ev.second);
+    }
+
+    res.sort(res.begin(), res.end(), [](const Event& a, const Event& b){return a.getEventType() < b.getEventType()});
+
+    return res;
+}
+
+vector<Event> Manager::listEventsSortedByParticipantCount()
+{
+    vector<Event> res;
+    for (auto& ev : event)
+    {
+        res.push_back(ev.second);
+    }
+
+    res.sort(res.begin(), res.end(), [](const Event& a, const Event& b){return a.participant_count() < b.participant_count()});
+
+    return res;
+}

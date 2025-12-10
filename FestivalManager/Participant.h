@@ -13,10 +13,10 @@ private:
     vector<int> registeredEvents;
 
 public:
-    Participant(string &n);
+    Participant(const string &n);
     int getID();
     string GetName() {return this->name; }
-    string SetName(string nm) {this->name = nm;}
+    void SetName(string nm) {this->name = nm;}
     void AddInEvent(int id);
 };
 
