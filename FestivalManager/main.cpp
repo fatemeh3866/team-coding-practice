@@ -15,13 +15,12 @@ int main() {
     p2("sara");
     int pid = p2.getID;
     int eid = e1.getID;
-    if (e1.getCapacity() == e1.setCapacity()) {
-        cerr << "full capacity";
+    try {
+        e1.addparticipant(int pid);
     }
-    e1.addparticipant(int pid);
-
-
-
+    catch(const CapacityException& e){
+        cout << e.what() << endl;
+    }
     Manager manager;
     try {
         manager.findEvent(int eid) {
