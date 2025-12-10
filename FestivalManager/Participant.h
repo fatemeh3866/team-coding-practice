@@ -14,6 +14,7 @@ private:
 
 public:
     Participant(string &n);
+    int getID();
     string GetName() {return this->name; }
     string SetName(string nm) {this->name = nm;}
     void AddInEvent(int id);

@@ -11,3 +11,6 @@ Participant::AddInEvent(int id)
 {
     this->registeredEvents.push_back(id);
 }
+int Participant::getID() {
+    return participantID;
+}
